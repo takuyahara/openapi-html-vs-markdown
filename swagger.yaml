@@ -1,0 +1,17 @@
+swagger: "2.0"
+info:
+  description: "Redocサンプル"
+  title: "Redoc sample"
+  version: "1.0.0"
+paths:
+  /user:
+    get:
+      summary: "ユーザ検索"
+      parameters:
+        - name: userId
+          in: query
+          description : 検索したいユーザのID
+          type: "string"
+      responses:
+        200:
+          description: "成功時のレスポンス"
