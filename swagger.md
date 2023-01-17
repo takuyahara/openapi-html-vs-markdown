@@ -16,7 +16,7 @@ GET /user HTTP/1.1
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|userId|query|string|false|検索したいユーザのID|
+|userId|query|undefined|false|検索したいユーザのID|
 
 <h3 id="ユーザ検索-responses">Responses</h3>
 
@@ -37,16 +37,37 @@ This operation does not require authentication
 ```http
 POST /user HTTP/1.1
 
+Content-Type: application/json
 Accept: application/json
 
+```
+
+> Body parameter
+
+```json
+[
+  {
+    "id": "007",
+    "name": "ゼニガメ",
+    "type": "みず",
+    "comment": "こうらに　とじこもり　みをまもる。"
+  },
+  {
+    "id": "132",
+    "name": "メタモン",
+    "type": "ノーマル",
+    "comment": "ぜんしんの　さいぼうを　くみかえて　みたもの　そっくりに　へんしんする"
+  }
+]
 ```
 
 <h3 id="ポケモン登録api-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|ポケモンを特定する一意のID|
-|name|path|string|true|ポケモンの名前|
+|id|path|undefined|true|ポケモンを特定する一意のID|
+|name|path|undefined|true|ポケモンの名前|
+|body|body|[pokemon-base-info](#schemapokemon-base-info)|true|登録したいポケモンのIDと名前を送信する。|
 
 > Example responses
 
@@ -94,23 +115,39 @@ Status Code **409**
 This operation does not require authentication
 </div>
 
-## pokemon-base-info_definitions
+# Schemas
 
-> Code samples
+<h2 id="tocS_pokemon-base-info">pokemon-base-info</h2>
 
-```http
-POKEMON-BASE-INFO /definitions HTTP/1.1
+<a id="schemapokemon-base-info"></a>
+<a id="schema_pokemon-base-info"></a>
+<a id="tocSpokemon-base-info"></a>
+<a id="tocspokemon-base-info"></a>
+
+```json
+[
+  {
+    "id": "007",
+    "name": "ゼニガメ",
+    "type": "みず",
+    "comment": "こうらに　とじこもり　みをまもる。"
+  },
+  {
+    "id": "132",
+    "name": "メタモン",
+    "type": "ノーマル",
+    "comment": "ぜんしんの　さいぼうを　くみかえて　みたもの　そっくりに　へんしんする"
+  }
+]
 
 ```
 
-<h3 id="pokemon-base-info_definitions-responses">Responses</h3>
+### Properties
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-
-<h3>Authentication</h3>
-
-<div class="success">
-This operation does not require authentication
-</div>
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|string|false|none|none|
+|name|string|false|none|none|
+|type|string|false|none|none|
+|comment|string|false|none|none|
 

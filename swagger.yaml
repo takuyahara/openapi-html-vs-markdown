@@ -1,4 +1,4 @@
-swagger: "2.0"
+openapi: "3.0.0"
 info:
   description: "Redocサンプル"
   title: "Redoc sample"
@@ -28,6 +28,13 @@ paths:
             description: "ポケモンの名前"
             required: true
             type: "string"
+        requestBody:
+          description: "登録したいポケモンのIDと名前を送信する。"
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/pokemon-base-info"
         responses:
           201:
             description: "Success"
@@ -66,7 +73,8 @@ paths:
                       type: string
                       example: "CONFLICT"
 
-  definitions:
+components:
+  schemas:
     pokemon-base-info:
       type: "array"
       items:
