@@ -15,3 +15,77 @@ paths:
       responses:
         200:
           description: "成功時のレスポンス"
+    post:
+        summary: "ポケモン登録API"
+        parameters:
+          - name: "id"
+            in: "path"
+            description: "ポケモンを特定する一意のID"
+            required: true
+            type: "string"
+          - name: "name"
+            in: "path"
+            description: "ポケモンの名前"
+            required: true
+            type: "string"
+        responses:
+          201:
+            description: "Success"
+            content:
+              application/json:
+                schema:
+                  type: "object"
+                  properties:
+                    success:
+                      type: "string"
+                      example: "REGISTERED"
+          400:
+            description: "BadRequest"
+            content:
+              application/json:
+                schema:
+                  type: "object"
+                  properties:
+                    status:
+                      type: string
+                      example: BAD_REQUEST
+                    message:
+                      type: string
+                      example: "BAD_REQUEST"
+          409:
+            description: "Conflict"
+            content:
+              application/json:
+                schema:
+                  type: "object"
+                  properties:
+                    status:
+                      type: string
+                      example: "CONFLICT"
+                    message:
+                      type: string
+                      example: "CONFLICT"
+
+  definitions:
+    pokemon-base-info:
+      type: "array"
+      items:
+        type: "object"
+        properties:
+          id:
+            type: "string"
+          name:
+            type: "string"
+          type:
+            type: "string"
+          comment:
+            type: "string"
+      example:
+        - id: "007"
+          name: "ゼニガメ"
+          type: "みず"
+          comment: "こうらに　とじこもり　みをまもる。"
+        - id: "132"
+          name: "メタモン"
+          type: "ノーマル"
+          comment: "ぜんしんの　さいぼうを　くみかえて　みたもの　そっくりに　へんしんする"
